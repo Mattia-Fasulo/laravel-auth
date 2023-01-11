@@ -13,7 +13,7 @@
             @endif
         </div> --}}
         <div class="container px-5 mt-3">
-            <h1>Edit Post: {{$project->title}}</h1>
+            <h1>Edit project: {{$project->title}}</h1>
             <div class="row bg-white">
                 <div class="col-12">
                     <form action="{{route('admin.projects.update', $project->slug)}}" method="POST" class="p-4">

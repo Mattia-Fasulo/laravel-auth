@@ -15,7 +15,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $project = Project::all();
+        $projects= Project::all();
 
         return view('admin.projects.index', compact('projects'));
     }
@@ -87,6 +87,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('admin.posts.index')->with('message', "$project->title deleted successfully");
+        return redirect()->route('admin.projects.index')->with('message', "$project->title deleted successfully");
     }
 }
