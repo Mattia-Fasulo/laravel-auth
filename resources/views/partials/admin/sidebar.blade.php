@@ -23,8 +23,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="#" class="nav-link text-white
-                aria-current="page">
+            <a href="{{ route('admin.categories.index')}}" class="nav-link text-white {{ Route::currentRouteName() == 'admin.categories.index' ? 'bg-secondary' : '' }}" aria-current="page">
                 <i class="fa-solid fa-folder-open mx-1"></i>
                 Categories
             </a>
