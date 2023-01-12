@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
  {{-- <div>
@@ -12,7 +12,7 @@
             </div>
             @endif
         </div> --}}
-        <div class="container px-5 mt-3">
+        <div class="mt-3 mx-4">
             <h1>Edit project: {{$project->title}}</h1>
             <div class="row bg-white">
                 <div class="col-12">

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 
 
@@ -14,8 +14,8 @@
             </div>
             @endif
         </div> --}}
-    <div class="container mt-3 px-5">
-        <h1>Create Project</h1>
+    <div class="mt-3 ">
+        <h1 class="mx-4">Create Project</h1>
         <div class="row bg-white">
             <div class="col-12">
                 <form action="{{ route('admin.projects.store') }}" method="POST" class="p-4">

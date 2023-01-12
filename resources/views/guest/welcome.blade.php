@@ -4,8 +4,8 @@
 <div class="jumbotron p-5 mb-4  rounded-3">
     <div class="container text-center py-5">
 
-        <h1><i class="fa-solid fa-trash-can"></i></h1>
-        <h1 class="display-5 fw-bold">
+
+        <h1 class="mt-5 fw-bold">
             Welcome to BoolFolio
         </h1>
         <p class="mt-5">
