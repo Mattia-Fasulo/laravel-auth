@@ -1,15 +1,15 @@
 <div id="sidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <svg class="bi me-2" width="40" height="32">
-            <use xlink:href="#bootstrap" />
-        </svg>
-        <span class="fs-4">BoolFolio</span>
+    <a href="/" id="logo-sidebar"
+        class="d-flex align-items-center  mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+        <span class="fw-bolder">BoolFolio</span>
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
         <li>
+
             <a href="{{ route('admin.dashboard') }}"
                 class="nav-link text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'bg-secondary' : '' }}">
+                <i class="fa-solid fa-gauge mx-1"></i>
                 Dashboard
             </a>
         </li>
@@ -17,8 +17,16 @@
             <a href="{{ route('admin.projects.index') }}"
                 class="nav-link text-white {{ Route::currentRouteName() == 'admin.projects.index' ? 'bg-secondary' : '' }}"
                 aria-current="page">
+                <i class="fa-solid fa-book mx-1"></i>
 
                 Projects
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#" class="nav-link text-white
+                aria-current="page">
+                <i class="fa-solid fa-folder-open mx-1"></i>
+                Categories
             </a>
         </li>
 
@@ -50,13 +58,24 @@
             <strong>{{ Auth::user()->name }}</strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="{{ route('admin.projects.create') }}">New project...</a></li>
             <li><a class="dropdown-item" href="#">Settings</a></li>
             <li><a class="dropdown-item" href="#">Profile</a></li>
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
+            <li><a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                    title="Logout">
+                    Sign out
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
         </ul>
     </div>
 </div>
+
+
+{{-- <a class="dropdown-item" href="#">Sign out</a> --}}

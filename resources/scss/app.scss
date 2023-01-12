@@ -6,20 +6,15 @@ $fa-font-path: "../fonts/font-awesome" !default;
 @import "@fortawesome/fontawesome-free/scss/brands";
 @import "bootstrap/scss/bootstrap";
 
+//----------General---------------//
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-#my-ul {
-    list-style: none !important;
-    margin-left: -30px;
-}
-
-body {
-    overflow: hidden;
-}
+//-----------Admin-----------//
 
 #admin {
     height: 100vh;
@@ -30,8 +25,17 @@ body {
         width: 280px;
         height: 100vh;
 
+
+        //------------sidebar------------//
         #sidebar {
             height: 100%;
+
+            #logo-sidebar{
+                margin-left: 1rem;
+                span {
+                    font-size: 2rem;
+                }
+            }
         }
     }
 
@@ -39,17 +43,19 @@ body {
         width: calc(100% - 280px);
         height: 100vh;
 
+        .navbar {
+            height: 80px;
+        }
+
         main {
-            height: calc(100% - 69px);
+            height: calc(100% - 80px);
             width: 100%;
             overflow-y: scroll;
         }
     }
 }
 
-.navbar {
-    height: 69px;
-}
+//----------projects table-----------------//
 
 #project-table {
     td {
