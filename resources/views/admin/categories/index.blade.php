@@ -11,9 +11,9 @@
                 {{ session()->get('message') }}
             </div>
         @endif
-        <div class="mx-3">
+        <div class="table-responsive mx-3">
             <table class="my-table table table-striped">
-                <thead>
+                <thead class="table-dark">
                     <tr class="text-center">
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
@@ -31,11 +31,11 @@
                             <td>{{ count($category->projects) }}</td>
                             <td><a class="link-secondary" href="{{ route('admin.categories.edit', $category->slug) }}"
                                     title="Edit Category"><i class="fa-solid fa-pen"></i></a></td>
-                            <td>
-                                <form action="{{ route('admin.categories.destroy', $category->slug) }}" method="POST">
+                            <td class="my-w-100">
+                                <form action="{{ route('admin.categories.destroy', $category->slug) }}" method="POST" >
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="delete-button btn btn-danger ms-3"
+                                    <button type="submit" class="delete-button btn btn-danger"
                                         data-item-title="{{ $category->name }}"><i
                                             class="fa-solid fa-trash-can"></i></button>
                                 </form>

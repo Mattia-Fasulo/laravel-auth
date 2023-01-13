@@ -11,9 +11,9 @@
                 {{ session()->get('message') }}
             </div>
         @endif
-        <div class="mx-3">
+        <div class="table-responsive mx-3">
             <table  class="my-table table table-striped">
-                <thead>
+                <thead class="table-dark">
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
@@ -21,7 +21,7 @@
                         <th scope="col">Category</th>
                         <th scope="col">Tags</th>
                         <th scope="col">Edit</th>
-                        <th scope="col">Delete</th>
+                        <th class="text-center" scope="col">Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,14 +32,14 @@
                                     title="View Project">{{ $project->title }}</a></td>
                             <td>{{ Str::limit($project->description, 80) }}</td>
                             <td>{{ $project->category ? $project->category->name : 'No category' }}</td>
-                            <td>{{ $project->tag && count($project->tag) > 0 ? count($project->tag) : 0 }}</td>
+                            <td class="text-center">{{ $project->tag && count($project->tag) > 0 ? count($project->tag) : 0 }}</td>
                             <td><a class="link-secondary" href="{{ route('admin.projects.edit', $project->slug) }}"
                                     title="Edit Project"><i class="fa-solid fa-pen"></i></a></td>
-                            <td>
+                            <td class="text-center">
                                 <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="delete-button btn btn-danger ms-3"
+                                    <button type="submit" class="delete-button btn btn-danger "
                                         data-item-title="{{ $project->title }}"><i
                                             class="fa-solid fa-trash-can"></i></button>
                                 </form>

@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Tag;
-use Illuminate\Http\Request;
+
+
+namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
+use App\Models\Tag;
+use App\Http\Requests\StoreTagRequest;
+use App\Http\Requests\UpdateTagRequest;
+
 
 class TagController extends Controller
 {
@@ -32,7 +38,7 @@ class TagController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      */
-    public function store(Request $request)
+    public function store(StoreTagRequest $request)
     {
         $val = $request->validated();
         $slug = Tag::generateSlug($request->name);
@@ -70,7 +76,7 @@ class TagController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Tag  $tag
      */
-    public function update(Request $request, Tag $tag)
+    public function update(UpdateTagRequest $request, Tag $tag)
     {
         $val_data = $request->validated();
         $slug = Tag::generateSlug($request->name);

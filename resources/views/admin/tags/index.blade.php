@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 class="m-3">Tags</h1>
-    <form class=" action="{{route('admin.tags.store')}}" method="post" class="d-flex align-items-center">
+    <form class=" action="{{route('admin.tags.store')}}" method="post" class="d-flex align-items-center m-4">
         @csrf
         <div class="input-group m-3 w-50">
             <input type="text" name="name" class="form-control" placeholder="
@@ -11,18 +11,18 @@
         </div>
     </form>
     @if(session()->has('message'))
-    <div class="alert alert-success mb-3 mt-3">
+    <div class="alert alert-success m-3">
         {{ session()->get('message') }}
     </div>
     @endif
     <div class="mx-3">
     <table class="my-table table table-striped">
-        <thead>
+        <thead class="table-dark">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Name</th>
-            <th scope="col">Posts</th>
-            <th scope="col">Delete</th>
+            <th class="text-center" scope="col">Posts</th>
+            <th class="text-center" scope="col">Delete</th>
         </tr>
         </thead>
         <tbody>
@@ -38,14 +38,14 @@
 
                     </td>
 
-                    <td>
+                    <td class="text-center">
                         {{ $tag->project && count($tag->project) > 0 ? count($tag->project) : 0 }}
                     </td>
-                    <td>
+                    <td class="my-w-100 text-center">
                         <form action="{{route('admin.tags.destroy', $tag->slug)}}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="delete-button btn btn-danger ms-3" data-item-title="{{$tag->name}}"><i class="fa-solid fa-trash-can"></i></button>
+                        <button type="submit" class="delete-button btn btn-danger " data-item-title="{{$tag->name}}"><i class="fa-solid fa-trash-can"></i></button>
                      </form>
                     </td>
                 </tr>

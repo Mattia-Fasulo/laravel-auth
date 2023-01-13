@@ -24,7 +24,15 @@ class StoreTagRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|unique:tags|max:150',
+        ];
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'The name is required.',
+            'name.max' => 'Name cannot exceed :max characters.',
+            'name.unique:tags' => 'The name already exists.'
         ];
     }
 }
