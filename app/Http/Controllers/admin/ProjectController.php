@@ -5,9 +5,13 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use App\Models\Category;
 use App\Models\Project;
+use App\Models\Tag;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+
 
 class ProjectController extends Controller
 {
@@ -35,7 +39,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('admin.projects.create', compact('categories','tags'));
     }
 
     /**
@@ -54,7 +60,13 @@ class ProjectController extends Controller
             $path = Storage::put('projects_images', $request->cover_image);
             $data['cover_image'] = $path;
         }
+
         $new_project = Project::create($data);
+
+        if($request->has('tags')){
+            $new_project->tags()->attach($request->tags);
+        }
+
         return redirect()->route('admin.projects.show', $new_project->slug);
 
 
@@ -80,10 +92,12 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        $categories = Category::all();
+        $tags = Tag::all();
         if(!Auth::user()->isAdmin() && $project->user_id !== Auth::id()){
             abort(403);
         }
-        return view('admin.projects.edit', ['project' => $project]);
+        return view('admin.projects.edit', ['project' => $project], compact('project','categories','tags'));
     }
 
     /**
@@ -110,6 +124,10 @@ class ProjectController extends Controller
         }
 
         $project->update($data);
+
+        if($request->has('tags')){
+            $project->tags()->sync($request->tags);
+        }
         return redirect()->route('admin.projects.index')->with('message', "$project->title updated successfully");
     }
 

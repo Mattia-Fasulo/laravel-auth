@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
         // ]);
         $this->call([
             ProjectsTableSeeder::class,
-            CategorySeeder::class
+            CategorySeeder::class,
+            TagSeeder::class
         ]);
     }
 }

@@ -34,16 +34,14 @@
         <li class="nav-item">
             <a href="{{ route('admin.categories.index') }}"
                 class="nav-link text-white {{ Route::currentRouteName() == 'admin.categories.index' ? 'bg-secondary' : '' }}"
-                aria-current="page">
-                <i class="fa-solid fa-folder-open mx-1"></i>
+                aria-current="page"><i class="fa-solid fa-folder-open mx-1"></i>
                 Categories
             </a>
         </li>
         <li class="nav-item">
-            <a href="#"
-                class="nav-link text-white"
-                aria-current="page">
-                <i class="fa-solid fa-bookmark fa-lg fa-fw mx-1"></i>
+            <a href="{{ route('admin.tags.index') }}"
+                class="nav-link text-white {{ Route::currentRouteName() == 'admin.tags.index' ? 'bg-secondary' : '' }}"
+                aria-current="page"><i class="fa-solid fa-bookmark fa-lg fa-fw "></i>
                 Tags
             </a>
         </li>
@@ -51,7 +49,7 @@
             <a href="#"
                 class="nav-link text-white"
                 aria-current="page">
-                <i class="fa-solid fa-users fa-lg fa-fw mx-1"></i>
+                <i class="fa-solid fa-users fa-lg fa-fw "></i>
                 Users
             </a>
         </li>

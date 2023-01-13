@@ -13,6 +13,10 @@
         </div>
         @endif
 
+        @if ($project->tag && count($projects->tag) > 0)
+
+        @endif
+
         <a href="{{route('admin.projects.edit', $project->slug)}}" class="btn btn-light border-dark">Edit</a>
     </div>
 
