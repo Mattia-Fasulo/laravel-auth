@@ -74,7 +74,7 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         $data = $request->validated();
-        $slug = Category::generateSlug($request->title);
+        $slug = Category::generateSlug($request->name);
         $data['slug'] = $slug;
         $category->update($data);
         return redirect()->route('admin.categories.index')->with('message', "$category->title updated successfully");

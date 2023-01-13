@@ -22,12 +22,45 @@
                 Projects
             </a>
         </li>
+        {{-- <li class="nav-item">
+            <a href="{{ route('admin.categories.index') }}"
+                class="nav-link text-white {{ Route::currentRouteName() == 'admin.categories.index' ? 'bg-secondary' : '' }}"
+                aria-current="page">
+                <i class="fa-solid fa-folder-open mx-1"></i>
+                Categories
+            </a>
+        </li> --}}
+        @if (Auth::check() && Auth::user()->isAdmin())
         <li class="nav-item">
-            <a href="{{ route('admin.categories.index')}}" class="nav-link text-white {{ Route::currentRouteName() == 'admin.categories.index' ? 'bg-secondary' : '' }}" aria-current="page">
+            <a href="{{ route('admin.categories.index') }}"
+                class="nav-link text-white {{ Route::currentRouteName() == 'admin.categories.index' ? 'bg-secondary' : '' }}"
+                aria-current="page">
                 <i class="fa-solid fa-folder-open mx-1"></i>
                 Categories
             </a>
         </li>
+        <li class="nav-item">
+            <a href="#"
+                class="nav-link text-white"
+                aria-current="page">
+                <i class="fa-solid fa-bookmark fa-lg fa-fw mx-1"></i>
+                Tags
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#"
+                class="nav-link text-white"
+                aria-current="page">
+                <i class="fa-solid fa-users fa-lg fa-fw mx-1"></i>
+                Users
+            </a>
+        </li>
+
+        @endif
+
+
+
+
 
         {{-- <li>
         <a href="#" class="nav-link text-white">
@@ -64,8 +97,7 @@
                 <hr class="dropdown-divider">
             </li>
             <li><a class="dropdown-item" href="{{ route('logout') }}"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                    title="Logout">
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="Logout">
                     Sign out
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
