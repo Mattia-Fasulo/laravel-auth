@@ -23,10 +23,10 @@ class ProjectController extends Controller
     {
 
         if(Auth::user()->isAdmin()){
-            $projects = Project::all();
+            $projects = Project::paginate(10);
         } else {
             $userId = Auth::id();
-            $projects = Project::where('user_id', $userId)->get();
+            $projects = Project::where('user_id', $userId)->paginate(10);
         }
 
 
