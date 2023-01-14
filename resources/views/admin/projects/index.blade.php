@@ -7,7 +7,7 @@
             <a class="btn btn-dark mx-3 mb-3" href="{{ route('admin.projects.create') }}">New Project</a>
         </div>
         @if (session()->has('message'))
-            <div class="alert alert-success my-1 mx-3">
+            <div class="alert alert-success mx-3 mb-3">
                 {{ session()->get('message') }}
             </div>
         @endif
