@@ -18,7 +18,8 @@ class Tag extends Model
         return Str::slug($name, '-');
     }
 
-    public function projects(){
+    public function projects(): BelongsToMany
+    {
         return $this->belongsToMany(Project::class);
     }
 }

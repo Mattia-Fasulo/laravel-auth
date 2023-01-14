@@ -49,7 +49,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="mb-3 w-25">
+                    <div class="mb-3">
                         <label for="category_id" class="form-label">Select Category</label>
                         <select name="category_id" id="category_id"
                             class="form-control @error('category_id') is-invalid @enderror">
@@ -69,26 +69,26 @@
                         <select multiple class="form-select" name="tags[]" id="tags">
                             <option value="">Seleziona tag</option>
                             @forelse ($tags as $tag)
-                            @if($errors->any())
+                                {{-- @if ($errors->any())
                             <option value="{{$tag->id}}" {{in_array($tag->id , old('tags[]')) ? 'selected': ''}}>{{$tag->name}}</option>
-                            @else
-                            <option value="{{$tag->id}}" {{$project->tags->contains($tag->id) ? 'selected': ''}}>{{$tag->name}}</option>
-                            @endif
+                            @else --}}
+                                <option value="{{ $tag->id }}"
+                                    {{ $project->tags->contains($tag->id) ? 'selected' : '' }}>{{ $tag->name }}</option>
+                                {{-- @endif --}}
                             @empty
                                 <option value="">No tag</option>
                             @endforelse
 
                         </select>
 
-                    <button type="submit" class="btn btn-dark mt-3">Submit</button>
-                    <button type="reset" class="btn btn-secondary mt-3">Reset</button>
+                        <button type="submit" class="btn btn-dark mt-3">Submit</button>
+                        <button type="reset" class="btn btn-secondary mt-3">Reset</button>
                 </form>
             </div>
         </div>
     </div>
-    <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript">
-    </script>
+    <script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
     <script type="text/javascript">
-      bkLib.onDomLoaded(nicEditors.allTextAreas);
+        bkLib.onDomLoaded(nicEditors.allTextAreas);
     </script>
 @endsection

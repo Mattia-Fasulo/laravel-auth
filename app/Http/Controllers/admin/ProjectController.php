@@ -92,12 +92,15 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
+        if(!Auth::user()->isAdmin() && $project->user_id !== Auth::id()){
+            abort(403);
+        }
         $categories = Category::all();
         $tags = Tag::all();
         if(!Auth::user()->isAdmin() && $project->user_id !== Auth::id()){
             abort(403);
         }
-        return view('admin.projects.edit', ['project' => $project], compact('project','categories','tags'));
+        return view('admin.projects.edit', compact('project','categories','tags'));
     }
 
     /**
@@ -123,6 +126,7 @@ class ProjectController extends Controller
             $data['cover_image'] = $path;
         }
 
+
         $project->update($data);
 
         if($request->has('tags')){
@@ -140,6 +144,9 @@ class ProjectController extends Controller
     {
         if(!Auth::user()->isAdmin() && $project->user_id !== Auth::id()){
             abort(403);
+        }
+        if($project->cover_image){
+            Storage::delete($project->cover_image);
         }
         $project->delete();
         return redirect()->route('admin.projects.index')->with('message', "$project->title deleted successfully");

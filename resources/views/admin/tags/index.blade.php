@@ -39,8 +39,9 @@
                     </td>
 
                     <td class="text-center">
-                        {{ $tag->project && count($tag->project) > 0 ? count($tag->project) : 0 }}
+                        {{ $tag->projects && count($tag->projects) > 0 ? count($tag->projects) : 0 }}
                     </td>
+
                     <td class="my-w-100 text-center">
                         <form action="{{route('admin.tags.destroy', $tag->slug)}}" method="POST">
                         @csrf

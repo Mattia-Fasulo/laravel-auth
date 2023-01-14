@@ -18,7 +18,6 @@ return new class extends Migration
             $table->string('title', 150)->unique;
             $table->string('slug', 250);
             $table->text('description');
-            $table->string('lenguage', 100)->nullable();
             $table->timestamps();
         });
     }
