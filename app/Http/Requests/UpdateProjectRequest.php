@@ -29,7 +29,7 @@ class UpdateProjectRequest extends FormRequest
             'description' => ['nullable'],
             'cover_image' => ['nullable','image','max:1000'],
             'category_id' => 'nullable|exists:categories,id',
-            'tags' => 'nullable|exists:tags,id'
+            // 'tags' => 'nullable|exists:tags,id'
         ];
     }
 }

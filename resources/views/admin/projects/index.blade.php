@@ -33,7 +33,7 @@
                             <td>{{ Str::limit($project->description, 80) }}</td>
                             <td>{{ $project->category ? $project->category->name : 'No category' }}</td>
                             <td class="text-center">{{ $project->tags && count($project->tags) > 0 ? count($project->tags) : 0 }}</td>
-                            <td><a class="link-secondary" href="{{ route('admin.projects.edit', $project->slug) }}"
+                            <td class="text-center"><a class="link-secondary" href="{{ route('admin.projects.edit', $project->slug) }}"
                                     title="Edit Project"><i class="fa-solid fa-pen"></i></a></td>
                             <td class="text-center">
                                 <form action="{{ route('admin.projects.destroy', $project->slug) }}" method="POST">

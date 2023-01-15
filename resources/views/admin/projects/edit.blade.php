@@ -57,7 +57,7 @@
                     </div>
 
                     {{-- category form --}}
-                    <div class="mb-3">
+                    <div class="mb-3 w-25">
                         <label for="category_id" class="form-label">Select Category</label>
                         <select name="category_id" id="category_id"
                             class="form-control @error('category_id') is-invalid @enderror">
